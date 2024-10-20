@@ -1,63 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Tables</title>
-    <link rel="stylesheet" href="/css/tables.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/tables.css">
 </head>
-<body>
-    <div class="layout">
+
+<body class="bg-gray-900 text-gray-200 font-sans">
+    <div class="absolute top-6 left-0 text-3xl text-white z-50">
+        <i class="fas fa-bars cursor-pointer" onclick="toggleSidebar()"></i>
+    </div>
+    
+    <div class="flex min-h-screen">
         <!-- Side Menu -->
-        <div class="side-menu">
-            <h1>WeatherApp</h1>
-                <a href="/index.html">Dashboard</a>
-                <a href="/tables.html">Tables</a>
+        <div class="sidebar bg-gray-800 text-white w-64 p-6 fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 md:relative z-30 closed">
+            <h1 class="text-2xl font-bold">WeatherApp</h1>
+            <nav class="mt-6 space-y-2">
+                <a href="/index.html" class="block text-white hover:bg-gray-700 p-2 rounded transition">Dashboard</a>
+                <a href="/tables.html" class="block text-white hover:bg-gray-700 p-2 rounded transition">Tables</a>
+            </nav>
         </div>
-        <div class="main-content">
-            <div class="header">
-                <div class="search-bar">
-                    <input type="text" id="city-input" placeholder="Enter city name..." />
-                    <button id="search-button">Search</button>
+
+        <!-- Main Content -->
+        <div class="flex flex-col min-h-screen ml-0 transition-all duration-300 md:pl-64">
+
+            <!-- Main content -->
+            <div class="main-content flex-grow flex justify-center">
+                <div class="content-wrapper bg-gray-800 rounded-lg shadow-lg p-4 w-full max-w-3xl">
+                    <div class="header mb-6">
+                        <div class="search-bar flex items-center space-x-2">
+                            <input type="text" id="city-input" placeholder="Enter city name..." class="flex-grow p-2 border rounded outline-none text-gray-900" />
+                            <button id="search-button" class="bg-yellow-500 text-white p-2 rounded hover:bg-yellow-600 transition">Search</button> 
+                            <div class="user-icon ml-auto">
+                              <i class="fas fa-user-circle text-3xl"></i>
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- Buttons for Sorting and Filtering -->
+                    <div class="mb-6 space-y-2">
+                        <button onclick="sortTemperaturesAscending()" class="bg-green-500 text-white p-2 rounded hover:bg-green-600 transition">Sort Temperatures (Ascending)</button>
+                        <button onclick="sortTemperaturesDescending()" class="bg-red-500 text-white p-2 rounded hover:bg-red-600 transition">Sort Temperatures (Descending)</button>
+                        <button onclick="filterRainyDays()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition">Show Rainy Days Only</button>
+                        <button onclick="showHighestTemperatureDay()" class="bg-purple-500 text-white p-2 rounded hover:bg-purple-600 transition">Show Highest Temperature Day</button>
+                    </div>
+
+                    <!-- Combined Sections for Forecast Table and Chat -->
+<div class="flex gap-4 mb-8">
+
+  <!-- Forecast Section -->
+  <section class="content-section flex-1">
+      <h2 class="text-xl font-semibold mb-4">5 Day Weather Forecast</h2>
+      <table class="forecast-table w-full table-auto border-collapse border border-gray-300 mb-4 text-gray-100">
+          <thead>
+              <tr class="bg-gray-700">
+                  <th class="border border-gray-500 p-2">Date</th>
+                  <th class="border border-gray-500 p-2">Temperature</th>
+                  <th class="border border-gray-500 p-2">Weather</th>
+              </tr>
+          </thead>
+          <tbody id="forecast-tbody">
+              <!-- Forecast data will be inserted here -->
+          </tbody>
+      </table>
+
+      <!-- Pagination -->
+      <div id="pagination" class="pagination flex justify-center items-center mt-4">
+          <button id="prevPageBtn" class="bg-yellow-500 text-gray-300 p-2 rounded hover:bg-gray-600 transition">Previous</button>
+          <span id="currentPage" class="mx-4">1</span>
+          <button id="nextPageBtn" class="bg-yellow-500 text-gray-300 p-2 rounded hover:bg-gray-600 transition">Next</button>
+      </div>
+  </section>
+
+  <!-- Chat Section -->
+  <section class="chat-section flex flex-col gap-4 w-full md:w-1/3"> <!-- Set width as needed -->
+      <!-- Input Section -->
+      <div class="input-section flex flex-col md:flex-row md:w-full">
+          <input type="text" id="userInput" placeholder="Ask about the weather..." class="flex-grow border rounded-l p-2 outline-none text-gray-900" />
+          <button id="sendButton" class="bg-gray-600 text-white p-2 rounded-r hover:bg-blue-700 transition">Send</button>
+      </div>
+
+      <!-- Chat Container -->
+      <div id="chat-container" class="chat-container border rounded-lg bg-gray-700 h-64 overflow-y-auto p-2 flex-grow"></div>
+  </section>
+</div>
+
                 </div>
-            </div>
-            <div class="content-wrapper">
-                <section class="content-section">
-                    <h2>5 Day Weather Forecast</h2>
-                    <table class="forecast-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Temperature</th>
-                                <th>Weather</th>
-                            </tr>
-                        </thead>
-                        <tbody id="forecast-tbody">
-                        </tbody>
-                    </table>
-
-                    <!-- Pagination -->
-                    <div class="pagination" id="pagination">
-                        <button id="prevPageBtn">Previous</button>
-                        <span id="currentPage">1</span>
-                        <button id="nextPageBtn">Next</button>
-                    </div>
-                </section>
-
-                <!-- Chat Section -->
-                <section class="chat-section">
-                    <div id="chat-container" class="chat-container"></div>
-                    <div class="input-section">
-                        <input type="text" id="userInput" placeholder="Ask about the weather..." class="user-input">
-                        <button id="sendButton" class="send-button">Send</button>
-                    </div>
-                </section>
             </div>
         </div>
     </div>
+
     <script src="/js/tables.js"></script>
     <script src="/js/chatbot.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('closed');
+        }
+    </script>
 </body>
+
 </html>

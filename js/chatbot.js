@@ -87,7 +87,7 @@ function displayMessage(text, sender) {
 
     const messageContent = `
 <div class="flex ${sender === 'user' ? 'flex-row-reverse' : ''} items-start space-x-3 ${sender === 'user' ? 'space-x-reverse' : ''} mb-4">
-<img class="w-8 h-8 rounded-full" src="${sender === 'user' ? 'user.png' : 'bot.avif'}" alt="${sender}">
+<img class="w-8 h-8 rounded-full" src="${sender === 'user' ? 'user.png' : 'bot.png'}" alt="${sender}">
 <div class="p-3 rounded-lg max-w-xs text-white ${sender === 'user' ? 'bg-gradient-to-r from-blue-500 to-blue-700' : 'bg-gradient-to-r from-gray-500 to-gray-700'}">
     ${text}
 </div>
