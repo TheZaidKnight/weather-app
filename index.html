@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <div class="side-menu">
+    <div>
+      <h1>WeatherApp</h1>
+      <a href="/index.html">Dashboard</a>
+      <a href="/tables.html">Tables</a>
+    </div>
+  </div>
+<div class="flexcol">
+  <div class="header">
+    <h1>Weather Dashboard</h1>
+    <div class="search-bar">
+      <input type="text" id="city-input" placeholder="Enter city name..." />
+      <button id="search-button">Search</button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="weather-widget" id="weather-widget">
+      <h2 id="city-name">City Name</h2>
+      <p id="weather-description">Weather Description</p>
+      <p id="temperature">Temperature: -- °C</p>
+      <p id="humidity">Humidity: --%</p>
+      <p id="wind-speed">Wind Speed: -- m/s</p>
+    </div>
+    <div class="chart-container">
+      <div class="chart" id="bar-chart">
+        <h3>5-Day Temperature (Bar Chart)</h3>
+        <canvas id="barChartCanvas"></canvas>
+      </div>
+      <div class="chart" id="doughnut-chart">
+        <h3>Weather Conditions (Doughnut Chart)</h3>
+        <canvas id="doughnutChartCanvas"></canvas>
+      </div>
+      <div class="chart" id="line-chart">
+        <h3>Temperature Trends (Line Chart)</h3>
+        <canvas id="lineChartCanvas"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

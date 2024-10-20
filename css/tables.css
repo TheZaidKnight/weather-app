@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Layout */
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Side Menu */
+.side-menu {
+    background-color: #333;
+    color: white;
+    width: 250px;
+    padding: 20px;
+}
+
+.side-menu h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.side-menu ul li {
+    margin-bottom: 10px;
+}
+
+.side-menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.search-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.search-bar input {
+    padding: 10px;
+    width: 200px;
+}
+
+.search-bar button {
+    padding: 10px;
+}
+
+/* Content Wrapper for Table and Chatbot - Flexbox */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between; /* Space between the table and chatbot */
+    gap: 20px; /* Space between sections */
+}
+
+/* Forecast Table Section */
+.content-section {
+    flex: 2; /* Takes up more space */
+}
+
+.forecast-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.forecast-table th, .forecast-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 10px;
+    padding: 10px;
+}
+
+/* Chat Section */
+.chat-section {
+    flex: 1; /* Takes up less space compared to table */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-container {
+    height: 300px;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+}
+
+.user-input {
+    padding: 10px;
+    flex: 1;
+}
+
+.send-button {
+    padding: 10px;
+}
