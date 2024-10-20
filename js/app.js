@@ -25,7 +25,6 @@ document.getElementById('search-button').addEventListener('click', function() {
       const forecastData = await forecastResponse.json();
   
       hourlyData = forecastData.list;
-      updatePagination();
   
       // Update charts with the forecast data
       updateCharts(forecastData);
@@ -41,14 +40,6 @@ document.getElementById('search-button').addEventListener('click', function() {
     document.getElementById('humidity').textContent = `Humidity: ${data.main.humidity}%`;
     document.getElementById('wind-speed').textContent = `Wind Speed: ${data.wind.speed} m/s`;
   }
-  
-  function updatePagination() {
-    document.getElementById('pagination').innerHTML = `
-      <button onclick="prevPage()">Previous</button>
-      <button onclick="nextPage()">Next</button>
-    `;
-  }
-
 let barChart;
 let doughnutChart;
 let lineChart;
