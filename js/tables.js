@@ -65,3 +65,7 @@ function nextPage() {
       renderTable(currentPage);
     }
   }
+  function toggleMenu() {
+    var sideMenu = document.getElementById('sideMenu');
+    sideMenu.classList.toggle('active');
+}

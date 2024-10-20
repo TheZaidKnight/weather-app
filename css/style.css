@@ -45,7 +45,11 @@
     padding: 20px;
     overflow-y: auto;
   }
-
+  .hamburger-menu {
+    font-size: 30px;
+    cursor: pointer;
+    display: none;
+}
   /* Weather Widget */
   .weather-widget {
     background-color: #ddd;
@@ -55,6 +59,37 @@
     text-align: center;
     transition: background 0.3s ease;
   }
+  .weather-widget:hover {
+    background-color: #ccc;
+  }
+/* Flexbox for side-by-side layout */
+.weather-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Allows wrapping if needed for smaller screens */
+  gap: 15px; /* Adds space between containers */
+}
+
+/* Individual weather info containers */
+.weather-info {
+  flex: 1; /* Ensures containers are equally sized */
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.weather-info h2, .weather-info p {
+  margin: 0;
+}
+
+/* Responsive behavior for smaller screens */
+@media (max-width: 768px) {
+  .weather-container {
+    flex-direction: column;
+  }
+}
 
   /* Chart and table containers */
   .chart-container {
